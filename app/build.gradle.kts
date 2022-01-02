@@ -64,6 +64,8 @@ dependencies {
         Core()
         Data()
         Domain()
+        Lifecycle()
+        ViewModel()
     }
 
 }

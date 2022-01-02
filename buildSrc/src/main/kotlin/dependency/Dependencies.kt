@@ -16,11 +16,16 @@ class Dependencies(
     fun Room() {
         val v = "2.4.0"
         add("androidx.room:room-runtime:$v")
+        add("androidx.room:room-ktx:$v")
         kapt("androidx.room:room-compiler:$v")
     }
 
     fun ConstraintLayout() {
         add("androidx.constraintlayout:constraintlayout:2.1.2")
+    }
+
+    fun ViewModel() {
+        add("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     }
 
     fun Junit() {
@@ -41,7 +46,12 @@ class Dependencies(
         add("androidx.appcompat:appcompat:1.4.0")
     }
 
+    fun Lifecycle() {
+        add("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    }
+
     fun NavigationComponent() {
+        add("androidx.navigation:navigation-runtime-ktx:2.3.5")
         add("androidx.navigation:navigation-fragment-ktx:2.3.5")
         add("androidx.navigation:navigation-ui-ktx:2.3.5")
     }
