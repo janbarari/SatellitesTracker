@@ -3,6 +3,8 @@ import dependency.local
 plugins {
     androidLibrary
     kotlinAndroid
+    hilt
+    kotlinKapt
 }
 
 android {
@@ -34,7 +36,9 @@ dependencies {
     local {
         baseAndroidx()
         Junit()
+        RecyclerView()
         Espresso()
+        Hilt()
     }
 
 }

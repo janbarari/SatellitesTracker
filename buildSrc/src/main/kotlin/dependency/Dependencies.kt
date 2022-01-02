@@ -63,6 +63,10 @@ class Dependencies(
         kapt("com.google.dagger:hilt-android-compiler:2.40.3")
     }
 
+    fun RecyclerView() {
+        add("androidx.recyclerview:recyclerview:1.2.1")
+    }
+
     fun Moshi() {
         add("com.squareup.moshi:moshi-kotlin:1.13.0")
     }

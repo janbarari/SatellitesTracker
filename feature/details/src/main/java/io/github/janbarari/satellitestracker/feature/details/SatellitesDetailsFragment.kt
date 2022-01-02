@@ -2,7 +2,7 @@ package io.github.janbarari.satellitestracker.feature.details
 
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.janbarari.satellitestracker.core.ViewModelFragment
+import io.github.janbarari.satellitestracker.core.fragment.ViewModelFragment
 import io.github.janbarari.satellitestracker.feature.details.databinding.SatellitesDetailsFragmentBinding
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package io.github.janbarari.satellitestracker.core
+package io.github.janbarari.satellitestracker.core.activity
 
 import android.content.Intent
 import android.os.Bundle

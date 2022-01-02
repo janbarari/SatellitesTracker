@@ -3,6 +3,7 @@ import dependency.local
 plugins {
     androidLibrary
     kotlinAndroid
+    kotlinParcelize
 }
 
 android {

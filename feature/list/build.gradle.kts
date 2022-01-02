@@ -40,6 +40,8 @@ dependencies {
         Core()
         Hilt()
         NavigationComponent()
+        ConstraintLayout()
+        Domain()
     }
 
 }

@@ -1,10 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.SatellitesTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
+    <style name="Theme.SatellitesTracker" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/wheat</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/wheat</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/wheat</item>
     </style>
 
 </resources>
