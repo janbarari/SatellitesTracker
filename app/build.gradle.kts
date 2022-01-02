@@ -49,7 +49,7 @@ android {
 dependencies {
 
     global {
-        Appcompat()
+        baseAndroidx()
         Coroutines()
         Room()
         Junit()

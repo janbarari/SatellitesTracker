@@ -3,6 +3,8 @@ import dependency.local
 plugins {
     androidLibrary
     kotlinAndroid
+    kotlinKapt
+    hilt
 }
 
 android {
@@ -22,12 +24,20 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
 }
 
 dependencies {
 
     local {
+        baseAndroidx()
         Junit()
+        Core()
+        Hilt()
     }
 
 }

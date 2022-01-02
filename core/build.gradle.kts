@@ -32,7 +32,7 @@ android {
 dependencies {
 
     local {
-        Appcompat()
+        baseAndroidx()
         Junit()
         Espresso()
     }
