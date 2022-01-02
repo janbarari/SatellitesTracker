@@ -44,6 +44,7 @@ class Dependencies(
     fun Appcompat() {
         add("androidx.core:core-ktx:1.7.0")
         add("androidx.appcompat:appcompat:1.4.0")
+        add("androidx.activity:activity-ktx:1.4.0")
     }
 
     fun Lifecycle() {
