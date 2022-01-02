@@ -1,4 +1,4 @@
-package io.gthub.janbarari.satellitestracker
+package io.github.janbarari.satellitestracker
 
 import org.junit.Test
 

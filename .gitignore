@@ -1,2 +1,5 @@
 .DS_Store
 .gradle/*
+.idea/*
+buildSrc/.gradle/*
+buildSrc/build/*

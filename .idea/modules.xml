@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SatellitesTracker.iml" filepath="$PROJECT_DIR$/.idea/modules/SatellitesTracker.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SatellitesTracker.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SatellitesTracker.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SatellitesTracker.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/SatellitesTracker.buildSrc.iml" />
     </modules>
   </component>
 </project>
