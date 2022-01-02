@@ -1,5 +1,5 @@
 package io.github.janbarari.satellitestracker.host
 
-import io.gthub.janbarari.satellitestracker.core.BaseViewModel
+import io.github.janbarari.satellitestracker.core.BaseViewModel
 
 class HostViewModel: BaseViewModel()

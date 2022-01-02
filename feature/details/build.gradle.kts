@@ -5,6 +5,7 @@ plugins {
     kotlinAndroid
     kotlinKapt
     hilt
+    navigationComponent
 }
 
 android {
@@ -38,6 +39,7 @@ dependencies {
         Junit()
         Core()
         Hilt()
+        NavigationComponent()
     }
 
 }

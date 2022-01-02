@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_nav_graph"
+    app:startDestination="@id/satellites_list_fragment">
+
+    <fragment
+        android:id="@+id/satellites_list_fragment"
+        android:name="io.github.janbarari.satellitestracker.feature.list.SatellitesListFragment"
+        android:label="Satellites List"
+        tools:layout="@layout/satellites_list_fragment">
+
+        <deepLink app:uri="myApp://satellites_list" />
+
+    </fragment>
+
+</navigation>
