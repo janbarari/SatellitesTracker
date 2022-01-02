@@ -59,6 +59,11 @@ dependencies {
         NavigationComponent()
         Hilt()
         Moshi()
+        Feature_List()
+        Feature_Details()
+        Core()
+        Data()
+        Domain()
     }
 
 }

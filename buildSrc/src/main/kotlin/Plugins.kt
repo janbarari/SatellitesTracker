@@ -5,7 +5,7 @@ private typealias PDsS = PluginDependenciesSpec
 private typealias PDS = PluginDependencySpec
 
 inline val PDsS.androidApplication: PDS get() = id("com.android.application")
-inline val PDsS.androidLib: PDS get() = id("com.android.library")
+inline val PDsS.androidLibrary: PDS get() = id("com.android.library")
 inline val PDsS.kotlinAndroid: PDS get() = id("kotlin-android")
 inline val PDsS.kotlinExtension: PDS get() = id("kotlin-android-extensions")
 inline val PDsS.kotlin: PDS get() = id("kotlin")

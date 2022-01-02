@@ -1,9 +1,10 @@
 package dependency
 
 import org.gradle.api.artifacts.dsl.DependencyHandler
+import org.gradle.kotlin.dsl.project
 
 class Dependencies(
-    dependencyHandler: DependencyHandler,
+    val dependencyHandler: DependencyHandler,
     injectScope: InjectScope
 ) : DependencyHelper(dependencyHandler, injectScope) {
 
@@ -52,6 +53,26 @@ class Dependencies(
 
     fun Moshi() {
         add("com.squareup.moshi:moshi-kotlin:1.13.0")
+    }
+
+    fun Feature_List() {
+        inject(dependencyHandler.project(":feature:list"))
+    }
+
+    fun Feature_Details() {
+        inject(dependencyHandler.project(":feature:details"))
+    }
+
+    fun Core() {
+        inject(dependencyHandler.project(":core"))
+    }
+
+    fun Data() {
+        inject(dependencyHandler.project(":data"))
+    }
+
+    fun Domain() {
+        inject(dependencyHandler.project(":domain"))
     }
 
 }
