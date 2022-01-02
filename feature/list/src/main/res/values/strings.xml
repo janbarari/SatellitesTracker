@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="active">Active</string>
-    <string name="passive">Passive</string>
+    <string name="cd_status_icon">Status Icon</string>
 </resources>

@@ -1,7 +1,9 @@
 package io.github.janbarari.satellitestracker.feature.list
 
+import android.net.Uri
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -10,6 +12,8 @@ import io.github.janbarari.satellitestracker.core.fragment.ViewModelFragment
 import io.github.janbarari.satellitestracker.domain.entity.Satellite
 import io.github.janbarari.satellitestracker.feature.list.adapter.SatellitesAdapter
 import io.github.janbarari.satellitestracker.feature.list.databinding.SatellitesListFragmentBinding
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 import javax.inject.Named
@@ -38,7 +42,7 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
         )
 
         satellitesAdapter = SatellitesAdapter(demo) {
-
+            findNavController().navigate(Uri.parse("myApp://satellite_details/${it.id}"))
         }
 
         binding.list.apply {

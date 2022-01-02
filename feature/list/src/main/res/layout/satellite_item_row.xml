@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
+    android:layout_height="48dp"
     android:clickable="true"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground">
 
@@ -14,9 +16,10 @@
         android:layout_height="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/title"
-        app:layout_constraintHorizontal_bias="0.844"
+        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/cd_status_icon"
         tools:src="@drawable/ic_active" />
 
     <TextView
@@ -24,11 +27,12 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="44dp"
-        android:textColor="@color/textColor"
-        android:textFontWeight="500"
+        android:textColor="@color/textPrimary"
+        android:fontFamily="@font/roboto_bold"
         app:layout_constraintBottom_toTopOf="@id/description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Dragon1" />
@@ -38,13 +42,14 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="44dp"
-        android:textColor="@color/textColor"
-        android:textFontWeight="400"
+        android:textColor="@color/textPrimary"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
-        tools:text="Dragon1" />
+        tools:text="Active" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

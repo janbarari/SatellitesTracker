@@ -21,10 +21,10 @@ class SatelliteViewHolder(
 
             if (satellite.active) {
                 statusImage.setImageResource(R.drawable.ic_active)
-                description.text = view.context.getString(R.string.active)
+                description.text = "Active"
             } else {
                 statusImage.setImageResource(R.drawable.ic_deactive)
-                description.text = view.context.getString(R.string.passive)
+                description.text = "Passive"
             }
 
             binding.root.whenClicked {

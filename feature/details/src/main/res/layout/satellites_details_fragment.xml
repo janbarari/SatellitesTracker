@@ -1,7 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Dragon-1"
+        android:textColor="@color/textPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:alpha="0.7"
+        android:fontFamily="@font/roboto_regular"
+        android:text="01.012.2012"
+        android:textColor="@color/textPrimary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+    <TextView
+        android:id="@+id/height_label"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="end"
+        android:text="Height/Mass:"
+        android:textColor="@color/textPrimary"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/datetime"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:text="110/1135000"
+        android:textColor="@color/textPrimary"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/height_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/height_label"
+        app:layout_constraintTop_toTopOf="@id/height_label" />
+
+    <TextView
+        android:id="@+id/cost_label"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="end"
+        android:text="Cost:"
+        android:textColor="@color/textPrimary"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/height"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/cost"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="8.300.000"
+        android:textColor="@color/textPrimary"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/cost_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/cost_label"
+        app:layout_constraintTop_toTopOf="@id/cost_label" />
+
+    <TextView
+        android:id="@+id/position_label"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="end"
+        android:text="Last Position:"
+        android:textColor="@color/textPrimary"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/position"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cost"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/position"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:text="0.8654343432, 0.7434234"
+        android:layout_marginLeft="8dp"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/textPrimary"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/position_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/position_label"
+        app:layout_constraintTop_toTopOf="@id/position_label" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
