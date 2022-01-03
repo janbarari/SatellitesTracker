@@ -8,6 +8,22 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tablet_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/tap_item_to_show"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:drawableTopCompat="@drawable/ic_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,14 +34,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_bias="@dimen/title_vertical_bias"
         tools:text="Dragon-1" />
 
     <TextView
         android:id="@+id/datetime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:alpha="0.7"
         android:fontFamily="@font/roboto_regular"
         android:textColor="@color/textPrimary"
@@ -37,7 +53,7 @@
 
     <TextView
         android:id="@+id/height_label"
-        android:layout_width="130dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/roboto_bold"
@@ -45,29 +61,29 @@
         android:text="Height/Mass:"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/datetime"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintWidth_percent="0.5" />
 
     <TextView
         android:id="@+id/height"
-        android:layout_width="190dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="8dp"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/height_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/height_label"
         app:layout_constraintTop_toTopOf="@id/height_label"
+        app:layout_constraintWidth_percent="0.5"
         tools:text="110/1135000" />
 
     <TextView
         android:id="@+id/cost_label"
-        android:layout_width="130dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto_bold"
@@ -75,30 +91,29 @@
         android:text="Cost:"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cost"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/height"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintWidth_percent="0.5" />
 
     <TextView
         android:id="@+id/cost"
-        android:layout_width="190dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="8dp"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/cost_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/cost_label"
         app:layout_constraintTop_toTopOf="@id/cost_label"
+        app:layout_constraintWidth_percent="0.5"
         tools:text="8.300.000" />
 
     <TextView
         android:id="@+id/position_label"
-        android:layout_width="130dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto_bold"
@@ -106,27 +121,25 @@
         android:text="Last Position:"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/position"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cost"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintWidth_percent="0.5" />
 
     <TextView
         android:id="@+id/position"
-        android:layout_width="190dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:fontFamily="@font/roboto_regular"
         android:lineSpacingExtra="4dp"
+        android:paddingLeft="8dp"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/position_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/position_label"
         app:layout_constraintTop_toTopOf="@id/position_label"
-        tools:text="0.8654343432, 0.7434234" />
+        app:layout_constraintWidth_percent="0.5"
+        tools:text="0.8654343432\n0.7434234" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

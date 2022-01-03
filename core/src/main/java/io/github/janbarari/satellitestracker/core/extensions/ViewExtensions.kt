@@ -23,3 +23,11 @@ fun View.clicks(): Flow<View> {
         awaitClose { setOnClickListener(null) }
     }
 }
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
+}

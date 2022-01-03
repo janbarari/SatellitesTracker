@@ -2,7 +2,11 @@ package io.github.janbarari.satellitestracker.feature.list
 
 import android.net.Uri
 import android.view.View
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +37,12 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
     override fun views() {
 
         satellitesAdapter = SatellitesAdapter(viewModel.satellites.value) {
-            findNavController().navigate(Uri.parse("myApp://satellite_details/${it.id}/${it.name}"))
+            if(resources.getBoolean(R.bool.isTablet)) {
+                val navHostFragment = requireActivity().supportFragmentManager.findFragmentByTag("nav_detail_fragment") as NavHostFragment
+                navHostFragment.navController.navigate(Uri.parse("myApp://satellite_details/${it.id}/${it.name}"))
+            } else {
+                findNavController().navigate(Uri.parse("myApp://satellite_details/${it.id}/${it.name}"))
+            }
         }
 
         binding.list.apply {
@@ -87,16 +96,18 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
     override fun observers() {
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.satellites.collectLatest {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.satellites.collectLatest {
 
-                binding.progressBar.show()
-                delay(500)
-                binding.progressBar.hide()
+                    binding.progressBar.show()
+                    delay(500)
+                    binding.progressBar.hide()
 
-                if (isSearchQueryExists()) {
-                    searchByName(getSearchQuery())
-                } else {
-                    satellitesAdapter.updateList(it)
+                    if (isSearchQueryExists()) {
+                        searchByName(getSearchQuery())
+                    } else {
+                        satellitesAdapter.updateList(it)
+                    }
                 }
             }
         }

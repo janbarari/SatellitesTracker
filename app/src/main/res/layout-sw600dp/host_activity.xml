@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_list_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="@dimen/tablet_left_panel_width"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/app_nav_graph" />
+
+    <View
+        android:id="@+id/line_separator"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="#26000000"
+        app:layout_constraintStart_toEndOf="@id/nav_list_fragment" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_detail_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:tag="nav_detail_fragment"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/line_separator"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/details_nav_graph" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
