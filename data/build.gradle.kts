@@ -3,6 +3,9 @@ import dependency.local
 plugins {
     androidLibrary
     kotlinAndroid
+    hilt
+    kotlinKapt
+    kotlinParcelize
 }
 
 android {
@@ -27,7 +30,12 @@ android {
 dependencies {
 
    local {
+       Coroutines()
        Junit()
+       Hilt()
+       Domain()
+       Room()
+       Moshi()
    }
 
 }

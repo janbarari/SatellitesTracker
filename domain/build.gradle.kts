@@ -4,6 +4,8 @@ plugins {
     androidLibrary
     kotlinAndroid
     kotlinParcelize
+    hilt
+    kotlinKapt
 }
 
 android {
@@ -28,7 +30,9 @@ android {
 dependencies {
 
     local {
+        Coroutines()
         Junit()
+        Hilt()
     }
 
 }

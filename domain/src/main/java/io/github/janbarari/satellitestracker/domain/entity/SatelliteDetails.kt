@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class SatellitesDetail(
+data class SatelliteDetails(
     val id: Int,
     val costPerLaunch: Int,
     val firstFlight: String,

@@ -2,6 +2,7 @@ package io.github.janbarari.satellitestracker.feature.list
 
 import android.net.Uri
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -14,7 +15,9 @@ import io.github.janbarari.satellitestracker.feature.list.adapter.SatellitesAdap
 import io.github.janbarari.satellitestracker.feature.list.databinding.SatellitesListFragmentBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Provider
@@ -33,15 +36,7 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
 
     override fun views() {
 
-        val demo = arrayListOf(
-            Satellite(1, true, "Dragon-1"),
-            Satellite(2, false, "Falcon-9"),
-            Satellite(3, false, "Falcon Heavy"),
-            Satellite(4, true, "BlueOrigin"),
-            Satellite(5, true, "SpaceX"),
-        )
-
-        satellitesAdapter = SatellitesAdapter(demo) {
+        satellitesAdapter = SatellitesAdapter(viewModel.satellites.value) {
             findNavController().navigate(Uri.parse("myApp://satellite_details/${it.id}"))
         }
 
@@ -56,16 +51,20 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
             )
         }
 
+    }
+
+    override fun listeners() {
+
         binding.searchView
             .queryTextEvents()
             .debounce(300)
             .distinctUntilChanged()
             .onEach { event ->
                 if (event.query.isBlank()) {
-                    satellitesAdapter.reset(demo)
+                    satellitesAdapter.reset(viewModel.satellites.value)
                     return@onEach
                 }
-                demo.filter {
+                viewModel.satellites.value.filter {
                     it.name.toString().replace(" ", "").lowercase().contains(
                         event.query.toString().replace(" ", "").lowercase()
                     )
@@ -77,8 +76,16 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
 
     }
 
-    override fun listeners() {
+    override fun observers() {
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.satellites.collectLatest {
+                binding.progressBar.show()
+                delay(1500)
+                satellitesAdapter.updateList(it)
+                binding.progressBar.hide()
+            }
+        }
 
     }
 

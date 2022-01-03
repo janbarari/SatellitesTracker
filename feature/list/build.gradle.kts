@@ -38,10 +38,11 @@ dependencies {
         baseAndroidx()
         Junit()
         MaterialDesign()
-        Core()
         Hilt()
         NavigationComponent()
         ConstraintLayout()
+        Core()
+        Data()
         Domain()
     }
 

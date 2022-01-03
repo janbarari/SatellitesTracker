@@ -13,13 +13,4 @@ class HostActivity : ViewModelActivity<HostActivityBinding, HostViewModel>(
 ) {
     override fun getLayoutBinding(v: View) = HostActivityBinding.bind(v)
 
-    override fun views() {
-        applyTheme()
-
-
-    }
-
-    private fun applyTheme() {
-
-    }
 }
