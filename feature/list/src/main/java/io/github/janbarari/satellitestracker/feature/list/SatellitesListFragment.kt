@@ -37,12 +37,7 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
     override fun views() {
 
         satellitesAdapter = SatellitesAdapter(viewModel.satellites.value) {
-            if(resources.getBoolean(R.bool.isTablet)) {
-                val navHostFragment = requireActivity().supportFragmentManager.findFragmentByTag("nav_detail_fragment") as NavHostFragment
-                navHostFragment.navController.navigate(Uri.parse("myApp://satellite_details/${it.id}/${it.name}"))
-            } else {
-                findNavController().navigate(Uri.parse("myApp://satellite_details/${it.id}/${it.name}"))
-            }
+            gotoSatelliteDetails(it.id, it.name)
         }
 
         binding.list.apply {
@@ -56,6 +51,18 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
             )
         }
 
+    }
+
+    private fun gotoSatelliteDetails(id: Int, name: String) {
+        val deepLink = Uri.parse("myApp://satellite_details/$id/$name")
+        if(resources.getBoolean(R.bool.isTablet)) {
+            val navHostFragment = requireActivity()
+                .supportFragmentManager
+                .findFragmentByTag("nav_detail_fragment") as NavHostFragment
+            navHostFragment.navController.navigate(deepLink)
+        } else {
+            findNavController().navigate(deepLink)
+        }
     }
 
     override fun listeners() {
@@ -100,7 +107,7 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
                 viewModel.satellites.collectLatest {
 
                     binding.progressBar.show()
-                    delay(500)
+                    delay(400)
                     binding.progressBar.hide()
 
                     if (isSearchQueryExists()) {

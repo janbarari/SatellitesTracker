@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class SatellitesListViewModel @Inject constructor(
     private val getSatelliteListUseCase: GetSatelliteListUseCase
-): BaseViewModel() {
+) : BaseViewModel() {
 
     private val _satellites: MutableStateFlow<List<Satellite>> = MutableStateFlow(arrayListOf())
     val satellites: StateFlow<List<Satellite>> = _satellites

@@ -36,14 +36,17 @@ dependencies {
 
     local {
         baseAndroidx()
+        Coroutines()
         Junit()
         MaterialDesign()
         Hilt()
         NavigationComponent()
         ConstraintLayout()
+        Mockk()
         Core()
         Data()
         Domain()
     }
+
 
 }

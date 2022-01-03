@@ -11,6 +11,7 @@ class Dependencies(
     fun Coroutines() {
         add("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
         add("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+        test("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
     }
 
     fun Room() {
@@ -91,6 +92,10 @@ class Dependencies(
 
     fun Domain() {
         inject(dependencyHandler.project(":domain"))
+    }
+
+    fun Mockk() {
+        test("io.mockk:mockk:1.10.0")
     }
 
 }
