@@ -10,14 +10,19 @@ import dagger.hilt.components.SingletonComponent
 import io.github.janbarari.satellitestracker.data.asset.AssetFileProvider
 import io.github.janbarari.satellitestracker.data.asset.AssetFileProviderImp
 import io.github.janbarari.satellitestracker.data.database.SatelliteTrackerDatabase
+import io.github.janbarari.satellitestracker.data.mapper.PositionMapper
 import io.github.janbarari.satellitestracker.data.mapper.SatelliteDetailsMapper
 import io.github.janbarari.satellitestracker.data.mapper.SatelliteListMapper
+import io.github.janbarari.satellitestracker.data.repository.PositionRepositoryImp
 import io.github.janbarari.satellitestracker.data.repository.SatelliteDetailsRepositoryImp
 import io.github.janbarari.satellitestracker.data.repository.SatelliteRepositoryImp
+import io.github.janbarari.satellitestracker.data.source.PositionLocalSource
 import io.github.janbarari.satellitestracker.data.source.SatelliteDetailsLocalSource
 import io.github.janbarari.satellitestracker.data.source.SatelliteLocalSource
+import io.github.janbarari.satellitestracker.data.source.imp.PositionLocalSourceImp
 import io.github.janbarari.satellitestracker.data.source.imp.SatelliteDetailsLocalSourceImp
 import io.github.janbarari.satellitestracker.data.source.imp.SatelliteLocalSourceImp
+import io.github.janbarari.satellitestracker.domain.repository.PositionRepository
 import io.github.janbarari.satellitestracker.domain.repository.SatelliteDetailsRepository
 import io.github.janbarari.satellitestracker.domain.repository.SatelliteRepository
 import javax.inject.Singleton
@@ -42,6 +47,7 @@ object InjectionModule {
         return AssetFileProviderImp(context, moshi)
     }
 
+    //region Mappers
     @Provides
     @Singleton
     fun provideSatelliteListMapper(): SatelliteListMapper = SatelliteListMapper()
@@ -50,6 +56,12 @@ object InjectionModule {
     @Singleton
     fun provideSatelliteDetailsMapper(): SatelliteDetailsMapper = SatelliteDetailsMapper()
 
+    @Provides
+    @Singleton
+    fun providePositionMapper(): PositionMapper = PositionMapper()
+    //endregion
+
+    //region Local source
     @Provides
     fun provideSatelliteLocalSource(
         db: SatelliteTrackerDatabase,
@@ -67,6 +79,19 @@ object InjectionModule {
     }
 
     @Provides
+    fun providePositionLocalSource(
+        db: SatelliteTrackerDatabase,
+        assetFileProvider: AssetFileProvider
+    ): PositionLocalSource {
+        return PositionLocalSourceImp(
+            db.getPositionDAO(),
+            assetFileProvider
+        )
+    }
+    //endregion
+
+    //region Repository
+    @Provides
     fun provideSatelliteRepository(
         satelliteLocalSource: SatelliteLocalSource,
         satelliteListMapper: SatelliteListMapper
@@ -81,5 +106,17 @@ object InjectionModule {
     ): SatelliteDetailsRepository {
         return SatelliteDetailsRepositoryImp(satelliteDetailsLocalSource, satelliteDetailsMapper)
     }
+
+    @Provides
+    fun providePositionRepository(
+        positionLocalSource: PositionLocalSource,
+        positionMapper: PositionMapper
+    ): PositionRepository {
+        return PositionRepositoryImp(
+            positionLocalSource,
+            positionMapper
+        )
+    }
+    //endregion
 
 }
