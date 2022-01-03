@@ -2,7 +2,6 @@ package io.github.janbarari.satellitestracker.feature.list
 
 import android.net.Uri
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -10,11 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.janbarari.satellitestracker.core.extensions.queryTextEvents
 import io.github.janbarari.satellitestracker.core.fragment.ViewModelFragment
-import io.github.janbarari.satellitestracker.domain.entity.Satellite
 import io.github.janbarari.satellitestracker.feature.list.adapter.SatellitesAdapter
 import io.github.janbarari.satellitestracker.feature.list.databinding.SatellitesListFragmentBinding
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -64,26 +60,44 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
                     satellitesAdapter.reset(viewModel.satellites.value)
                     return@onEach
                 }
-                viewModel.satellites.value.filter {
-                    it.name.toString().replace(" ", "").lowercase().contains(
-                        event.query.toString().replace(" ", "").lowercase()
-                    )
-                }.also {
-                    satellitesAdapter.updateList(it)
-                }
+                searchByName(event.query.toString())
             }
             .launchIn(lifecycleScope)
 
+    }
+
+    private fun searchByName(query: String) {
+        viewModel.satellites.value.filter {
+            it.name.replace(" ", "").lowercase().contains(
+                query.replace(" ", "").lowercase()
+            )
+        }.also {
+            satellitesAdapter.updateList(it)
+        }
+    }
+
+    private fun isSearchQueryExists(): Boolean {
+        return binding.searchView.query.toString().isNotBlank()
+    }
+
+    private fun getSearchQuery(): String {
+        return binding.searchView.query.toString()
     }
 
     override fun observers() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.satellites.collectLatest {
+
                 binding.progressBar.show()
-                delay(1500)
-                satellitesAdapter.updateList(it)
+                delay(500)
                 binding.progressBar.hide()
+
+                if (isSearchQueryExists()) {
+                    searchByName(getSearchQuery())
+                } else {
+                    satellitesAdapter.updateList(it)
+                }
             }
         }
 

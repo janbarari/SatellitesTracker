@@ -8,10 +8,12 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class GetSatelliteListUseCase @Inject constructor(): FlowUseCaseNoInput<List<Satellite>>() {
+class GetSatelliteListUseCase @Inject constructor(
+    private val repo: SatelliteRepository
+): FlowUseCaseNoInput<List<Satellite>>() {
 
     override suspend fun execute(): Flow<List<Satellite>> {
-        return flow {}
+        return repo.getAll()
     }
 
 }

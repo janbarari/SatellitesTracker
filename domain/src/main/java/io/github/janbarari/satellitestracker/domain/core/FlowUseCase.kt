@@ -1,11 +1,17 @@
 package io.github.janbarari.satellitestracker.domain.core
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 
-abstract class FlowUseCase<I, O> {
-    abstract suspend fun execute(input: I): Flow<O>
-}
+abstract class FlowUseCaseNoInput<O>(
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) {
 
-abstract class FlowUseCaseNoInput<O> {
+    suspend operator fun <T> invoke(): Flow<O> {
+        return execute().flowOn(dispatcher)
+    }
+
     abstract suspend fun execute(): Flow<O>
 }

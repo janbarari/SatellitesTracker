@@ -9,7 +9,8 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class SatelliteRepositoryImp @Inject constructor(
-    private val source: SatelliteLocalSource
+    private val source: SatelliteLocalSource,
+    private val satelliteListMapper: SatelliteListMapper
 ) : SatelliteRepository {
 
     override fun getAll(): Flow<List<Satellite>> {
@@ -20,11 +21,11 @@ class SatelliteRepositoryImp @Inject constructor(
                 if (initialSatellites.isNullOrEmpty().not()) {
                     source.saveInLocal(initialSatellites)
                     emit(
-                        SatelliteListMapper().map(initialSatellites)
+                        satelliteListMapper.map(initialSatellites)
                     )
                 }
             } else {
-                emit(SatelliteListMapper().map(localSatellites))
+                emit(satelliteListMapper.map(localSatellites))
             }
         }
     }

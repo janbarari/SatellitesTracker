@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class AssetFileProvider @Inject constructor(
     @ApplicationContext val context: Context,
-    val moshi: Moshi
+    private val moshi: Moshi
 ) {
 
     companion object {

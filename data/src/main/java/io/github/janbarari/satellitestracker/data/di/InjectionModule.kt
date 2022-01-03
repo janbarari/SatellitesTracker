@@ -10,11 +10,15 @@ import dagger.hilt.components.SingletonComponent
 import io.github.janbarari.satellitestracker.data.asset.AssetFileProvider
 import io.github.janbarari.satellitestracker.data.database.SatelliteTrackerDatabase
 import io.github.janbarari.satellitestracker.data.mapper.SatelliteListMapper
+import io.github.janbarari.satellitestracker.data.repository.SatelliteRepositoryImp
+import io.github.janbarari.satellitestracker.data.source.SatelliteLocalSource
+import io.github.janbarari.satellitestracker.data.source.imp.SatelliteLocalSourceImp
+import io.github.janbarari.satellitestracker.domain.repository.SatelliteRepository
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataInjectionModule {
+object InjectionModule {
 
     @Provides
     @Singleton
@@ -35,5 +39,21 @@ object DataInjectionModule {
     @Provides
     @Singleton
     fun provideSatelliteListMapper(): SatelliteListMapper = SatelliteListMapper()
+
+    @Provides
+    fun provideSatelliteLocalSource(
+        db: SatelliteTrackerDatabase,
+        assetFileProvider: AssetFileProvider
+    ): SatelliteLocalSource {
+        return SatelliteLocalSourceImp(db.getSatelliteDAO(), assetFileProvider)
+    }
+
+    @Provides
+    fun provideSatelliteRepository(
+        satelliteLocalSource: SatelliteLocalSource,
+        satelliteListMapper: SatelliteListMapper
+    ): SatelliteRepository {
+        return SatelliteRepositoryImp(satelliteLocalSource, satelliteListMapper)
+    }
 
 }
