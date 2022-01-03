@@ -1,6 +1,7 @@
 package io.github.janbarari.satellitestracker.data.source.imp
 
 import io.github.janbarari.satellitestracker.data.asset.AssetFileProvider
+import io.github.janbarari.satellitestracker.data.asset.AssetFileProviderImp
 import io.github.janbarari.satellitestracker.data.database.dao.SatelliteDao
 import io.github.janbarari.satellitestracker.data.database.entity.Satellite
 import io.github.janbarari.satellitestracker.data.source.SatelliteLocalSource

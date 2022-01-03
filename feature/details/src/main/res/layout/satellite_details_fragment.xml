@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -11,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="Dragon-1"
         android:textColor="@color/textPrimary"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.3"
+        tools:text="Dragon-1" />
 
     <TextView
         android:id="@+id/datetime"
@@ -27,12 +28,12 @@
         android:layout_marginTop="24dp"
         android:alpha="0.7"
         android:fontFamily="@font/roboto_regular"
-        android:text="01.012.2012"
         android:textColor="@color/textPrimary"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+        app:layout_constraintTop_toBottomOf="@id/name"
+        tools:text="01.012.2012" />
 
     <TextView
         android:id="@+id/height_label"
@@ -55,14 +56,14 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
-        android:text="110/1135000"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/height_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/height_label"
-        app:layout_constraintTop_toTopOf="@id/height_label" />
+        app:layout_constraintTop_toTopOf="@id/height_label"
+        tools:text="110/1135000" />
 
     <TextView
         android:id="@+id/cost_label"
@@ -86,14 +87,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="8.300.000"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/cost_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/cost_label"
-        app:layout_constraintTop_toTopOf="@id/cost_label" />
+        app:layout_constraintTop_toTopOf="@id/cost_label"
+        tools:text="8.300.000" />
 
     <TextView
         android:id="@+id/position_label"
@@ -116,9 +117,8 @@
         android:id="@+id/position"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="0.8654343432, 0.7434234"
         android:layout_marginLeft="8dp"
+        android:fontFamily="@font/roboto_regular"
         android:lineSpacingExtra="4dp"
         android:textColor="@color/textPrimary"
         android:textSize="15sp"
@@ -126,6 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/position_label"
-        app:layout_constraintTop_toTopOf="@id/position_label" />
+        app:layout_constraintTop_toTopOf="@id/position_label"
+        tools:text="0.8654343432, 0.7434234" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

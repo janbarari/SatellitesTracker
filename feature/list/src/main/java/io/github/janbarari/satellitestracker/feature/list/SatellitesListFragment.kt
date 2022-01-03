@@ -33,7 +33,7 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
     override fun views() {
 
         satellitesAdapter = SatellitesAdapter(viewModel.satellites.value) {
-            findNavController().navigate(Uri.parse("myApp://satellite_details/${it.id}"))
+            findNavController().navigate(Uri.parse("myApp://satellite_details/${it.id}/${it.name}"))
         }
 
         binding.list.apply {

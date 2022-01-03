@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/feature_details_nav_graph"
     app:startDestination="@id/satellites_details_fragment">
 
     <fragment
         android:id="@+id/satellites_details_fragment"
-        android:name="io.github.janbarari.satellitestracker.feature.details.SatellitesDetailsFragment"
+        android:name="io.github.janbarari.satellitestracker.feature.details.SatelliteDetailsFragment"
         android:label="Satellites Details"
-        tools:layout="@layout/satellites_details_fragment">
+        tools:layout="@layout/satellite_details_fragment">
 
         <argument
             android:name="id"
-            android:defaultValue="-1"/>
+            app:argType="integer" />
 
-        <deepLink app:uri="myApp://satellite_details/{id}"/>
+        <argument
+            android:name="name"
+            app:argType="string" />
+
+        <deepLink app:uri="myApp://satellite_details/{id}/{name}" />
 
     </fragment>
 

@@ -15,18 +15,23 @@ class SatelliteRepositoryImp @Inject constructor(
 
     override fun getAll(): Flow<List<Satellite>> {
         return flow {
-            val localSatellites = source.getAll()
-            if (localSatellites.isEmpty()) {
-                val initialSatellites = source.getInitialData()
-                if (initialSatellites.isNullOrEmpty().not()) {
-                    source.saveInLocal(initialSatellites)
-                    emit(
-                        satelliteListMapper.map(initialSatellites)
-                    )
-                }
-            } else {
-                emit(satelliteListMapper.map(localSatellites))
+
+            val dbData = source.getAll()
+
+            if (dbData.isNotEmpty()) {
+                emit(satelliteListMapper.map(dbData))
+                return@flow
             }
+
+            val initialSatellites = source.getInitialData()
+            if (initialSatellites.isNotEmpty()) {
+                source.saveInLocal(initialSatellites)
+                emit(satelliteListMapper.map(initialSatellites))
+                return@flow
+            }
+
+            emit(listOf())
+
         }
     }
 

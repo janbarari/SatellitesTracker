@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import io.github.janbarari.satellitestracker.data.database.SatelliteTrackerDatabase.Companion.VERSION
 import io.github.janbarari.satellitestracker.data.database.dao.PositionDao
 import io.github.janbarari.satellitestracker.data.database.dao.SatelliteDao
@@ -21,6 +22,7 @@ import io.github.janbarari.satellitestracker.data.database.entity.SatelliteDetai
     version = VERSION,
     exportSchema = false
 )
+@TypeConverters(io.github.janbarari.satellitestracker.data.database.TypeConverters::class)
 abstract class SatelliteTrackerDatabase : RoomDatabase() {
 
     abstract fun getPositionDAO(): PositionDao
