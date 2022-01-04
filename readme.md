@@ -28,4 +28,4 @@ Compatible with Android M and above.
 - Master View Design in Tablet Mode
 - Compatible with Android M and above
 
-# Clone and take a look inside
+UI Tests are exists in :app module
