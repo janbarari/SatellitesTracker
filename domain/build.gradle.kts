@@ -4,8 +4,6 @@ plugins {
     androidLibrary
     kotlinAndroid
     kotlinParcelize
-    hilt
-    kotlinKapt
 }
 
 android {
@@ -31,7 +29,6 @@ dependencies {
     local {
         Coroutines()
         Junit(enableAndroidTest = false)
-        Hilt()
     }
 
 }
