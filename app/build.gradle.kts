@@ -44,6 +44,26 @@ android {
         correctErrorTypes = true
     }
 
+    //Disable the animations if any in order to avoid some other error types
+    testOptions {
+        animationsDisabled = true
+    }
+
+    //Block exclude the files from above, in order to avoid weird compilations errors
+    packagingOptions {
+        resources.excludes.add("META-INF/DEPENDENCIES")
+        resources.excludes.add("META-INF/LICENSE")
+        resources.excludes.add("META-INF/LICENSE.txt")
+        resources.excludes.add("META-INF/license.txt")
+        resources.excludes.add("META-INF/NOTICE")
+        resources.excludes.add("META-INF/NOTICE.txt")
+        resources.excludes.add("META-INF/notice.txt")
+        resources.excludes.add("META-INF/ASL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
+        resources.excludes.add("META-INF/AL2.0")
+        resources.excludes.add("META-INF/*.kotlin_module")
+    }
+
 }
 
 dependencies {

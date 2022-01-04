@@ -29,13 +29,16 @@ class Dependencies(
         add("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     }
 
-    fun Junit() {
+    fun Junit(enableAndroidTest: Boolean = true) {
         test("junit:junit:4.13.2")
-        androidTest("androidx.test.ext:junit:1.1.3")
+        if (enableAndroidTest) {
+            androidTest("androidx.test.ext:junit-ktx:1.1.3")
+        }
     }
 
     fun Espresso() {
         androidTest("androidx.test.espresso:espresso-core:3.4.0")
+        androidTest("androidx.test.espresso:espresso-contrib:3.4.0")
     }
 
     fun MaterialDesign() {
@@ -63,6 +66,8 @@ class Dependencies(
     fun Hilt() {
         add("com.google.dagger:hilt-android:2.40.3")
         kapt("com.google.dagger:hilt-android-compiler:2.40.3")
+        androidTest("com.google.dagger:hilt-android-testing:2.40.3")
+        kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40.3")
     }
 
     fun RecyclerView() {
@@ -95,7 +100,8 @@ class Dependencies(
     }
 
     fun Mockk() {
-        test("io.mockk:mockk:1.10.0")
+        test("io.mockk:mockk:1.11.0")
+        androidTest("io.mockk:mockk-android:1.11.0")
     }
 
 }

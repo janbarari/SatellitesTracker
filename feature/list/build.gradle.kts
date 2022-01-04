@@ -14,7 +14,6 @@ android {
     defaultConfig {
         minSdk = 23
         targetSdk = 31
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -37,12 +36,13 @@ dependencies {
     local {
         baseAndroidx()
         Coroutines()
-        Junit()
+        Junit(enableAndroidTest = false)
+        Espresso()
+        Mockk()
         MaterialDesign()
         Hilt()
         NavigationComponent()
         ConstraintLayout()
-        Mockk()
         Core()
         Data()
         Domain()

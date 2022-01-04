@@ -5,6 +5,7 @@ import androidx.annotation.CheckResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.sendBlocking
+import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
@@ -19,7 +20,7 @@ fun View.whenClicked(block: View.() -> Unit) {
 fun View.clicks(): Flow<View> {
     return callbackFlow {
         checkMainThread()
-        setOnClickListener { sendBlocking(it) }
+        setOnClickListener { trySendBlocking(it) }
         awaitClose { setOnClickListener(null) }
     }
 }

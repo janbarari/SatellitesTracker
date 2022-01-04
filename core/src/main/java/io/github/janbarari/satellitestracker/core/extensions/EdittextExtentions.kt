@@ -6,6 +6,7 @@ import androidx.core.widget.doOnTextChanged
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.sendBlocking
+import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.onStart
@@ -15,7 +16,7 @@ import kotlinx.coroutines.flow.onStart
 fun EditText.textChanges(): Flow<CharSequence?> {
     return callbackFlow {
         checkMainThread()
-        val listener = doOnTextChanged { text, _, _, _ -> sendBlocking(text) }
+        val listener = doOnTextChanged { text, _, _, _ -> trySendBlocking(text) }
         awaitClose { removeTextChangedListener(listener) }
     }.onStart { emit(text) }
 }

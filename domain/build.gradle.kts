@@ -14,7 +14,6 @@ android {
     defaultConfig {
         minSdk = 23
         targetSdk = 31
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -31,7 +30,7 @@ dependencies {
 
     local {
         Coroutines()
-        Junit()
+        Junit(enableAndroidTest = false)
         Hilt()
     }
 

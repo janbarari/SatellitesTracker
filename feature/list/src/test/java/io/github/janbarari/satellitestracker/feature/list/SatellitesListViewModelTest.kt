@@ -16,7 +16,7 @@ import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class TestSatellitesListViewModel {
+class SatellitesListViewModelTest {
 
     @Before
     fun setup() {
@@ -39,6 +39,7 @@ class TestSatellitesListViewModel {
                 )
             }
         )
+
         val viewModel = SatellitesListViewModel(getSatellitesListUseCase)
         assertEquals(3, viewModel.satellites.value.size)
     }

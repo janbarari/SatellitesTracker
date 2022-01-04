@@ -45,6 +45,10 @@ abstract class DependencyHelper(
         dependencyHandler.add("androidTestImplementation", dependencyNotation)
     }
 
+    fun debug(dependencyNotation: Any) {
+        dependencyHandler.add("debugImplementation", dependencyNotation)
+    }
+
     fun kaptAndroidTest(dependencyNotation: Any) {
         dependencyHandler.add("kaptAndroidTest", dependencyNotation)
     }

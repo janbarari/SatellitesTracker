@@ -106,14 +106,9 @@ class SatelliteDetailsFragment : ViewModelFragment<SatelliteDetailsFragmentBindi
 
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         positionUpdaterJob?.cancel()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        positionUpdaterJob?.start()
     }
 
     override fun onFragmentCreated() {

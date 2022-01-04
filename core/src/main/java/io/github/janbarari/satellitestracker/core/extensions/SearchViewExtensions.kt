@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.sendBlocking
+import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.onStart
@@ -23,7 +24,7 @@ fun SearchView.queryTextEvents(): Flow<SearchViewQueryTextEvent> {
 
         setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                sendBlocking(
+                trySendBlocking(
                     SearchViewQueryTextEvent(
                         view = this@queryTextEvents,
                         query = query,
@@ -34,7 +35,7 @@ fun SearchView.queryTextEvents(): Flow<SearchViewQueryTextEvent> {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                sendBlocking(
+                trySendBlocking(
                     SearchViewQueryTextEvent(
                         view = this@queryTextEvents,
                         query = newText,
