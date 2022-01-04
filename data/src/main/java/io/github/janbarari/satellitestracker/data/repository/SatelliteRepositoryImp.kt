@@ -16,13 +16,14 @@ class SatelliteRepositoryImp @Inject constructor(
     override fun getAll(): Flow<List<Satellite>> {
         return flow {
 
+            //If cache is not empty then get positions form cache
             val dbData = source.getAll()
-
             if (dbData.isNotEmpty()) {
                 emit(satelliteListMapper.map(dbData))
                 return@flow
             }
 
+            //If cache is empty then get initial data from json file and add in cache
             val initialSatellites = source.getInitialData()
             if (initialSatellites.isNotEmpty()) {
                 source.saveInLocal(initialSatellites)
@@ -31,7 +32,6 @@ class SatelliteRepositoryImp @Inject constructor(
             }
 
             emit(listOf())
-
         }
     }
 

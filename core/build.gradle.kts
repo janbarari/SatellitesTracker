@@ -34,10 +34,9 @@ dependencies {
 
     local {
         BaseAndroidx()
-        Junit(isAndroidTestEnabled = false)
         RecyclerView()
-        Espresso()
-        Hilt()
+        Junit(isAndroidTestEnabled = false)
+        Hilt(isAndroidTestEnabled = false)
     }
 
 }

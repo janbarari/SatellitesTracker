@@ -29,12 +29,12 @@ android {
 dependencies {
 
    local {
-       Coroutines()
-       Junit()
-       Hilt()
-       Domain()
+       Coroutines(isTestEnabled = false)
+       Junit(isAndroidTestEnabled = false)
+       Hilt(isAndroidTestEnabled = false)
        Room()
        Moshi()
+       Domain()
    }
 
 }

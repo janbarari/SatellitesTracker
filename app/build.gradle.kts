@@ -1,4 +1,5 @@
 import dependency.global
+import dependency.local
 
 plugins {
     androidApplication
@@ -70,22 +71,12 @@ dependencies {
 
     global {
         BaseAndroidx()
-        Coroutines()
-        Room()
-        Junit()
-        Espresso()
-        ConstraintLayout()
-        MaterialDesign()
-        NavigationComponent()
         Hilt()
-        Moshi()
+    }
+
+    local {
         Feature_List()
         Feature_Details()
-        Core()
-        Data()
-        Domain()
-        Lifecycle()
-        ViewModel()
     }
 
 }

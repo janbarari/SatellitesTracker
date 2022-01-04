@@ -83,6 +83,11 @@ class Dependencies(
         kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
     }
 
+    fun Mockk() {
+        test("io.mockk:mockk:1.11.0")
+        androidTest("io.mockk:mockk-android:1.11.0")
+    }
+
     fun Feature_List() {
         inject(dependencyHandler.project(":feature:list"))
     }
@@ -101,11 +106,6 @@ class Dependencies(
 
     fun Domain() {
         inject(dependencyHandler.project(":domain"))
-    }
-
-    fun Mockk() {
-        test("io.mockk:mockk:1.11.0")
-        androidTest("io.mockk:mockk-android:1.11.0")
     }
 
 }

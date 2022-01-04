@@ -54,8 +54,6 @@ class SatelliteDetailsUITest {
                 ViewMatchers.withText("118")
             )
         ).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-
-
     }
 
 
