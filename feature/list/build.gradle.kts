@@ -34,19 +34,15 @@ android {
 dependencies {
 
     local {
-        baseAndroidx()
-        Coroutines()
-        Junit(enableAndroidTest = false)
-        Espresso()
-        Mockk()
-        MaterialDesign()
-        Hilt()
+        BaseAndroidx()
         NavigationComponent()
+        Coroutines(isTestEnabled = false)
+        Hilt(isAndroidTestEnabled = false)
         ConstraintLayout()
+        Junit(isAndroidTestEnabled = false)
         Core()
         Data()
         Domain()
     }
-
 
 }

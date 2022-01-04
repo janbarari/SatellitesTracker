@@ -5,7 +5,6 @@ import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -53,18 +52,6 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
 
     }
 
-    private fun gotoSatelliteDetails(id: Int, name: String) {
-        val deepLink = Uri.parse("myApp://satellite_details/$id/$name")
-        if(resources.getBoolean(R.bool.isTablet)) {
-            val navHostFragment = requireActivity()
-                .supportFragmentManager
-                .findFragmentByTag("nav_detail_fragment") as NavHostFragment
-            navHostFragment.navController.navigate(deepLink)
-        } else {
-            findNavController().navigate(deepLink)
-        }
-    }
-
     override fun listeners() {
 
         binding.searchView
@@ -80,6 +67,39 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
             }
             .launchIn(lifecycleScope)
 
+    }
+
+    override fun observers() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.satellites.collectLatest {
+
+                    binding.progressBar.show()
+                    delay(400)
+                    binding.progressBar.hide()
+
+                    if (isSearchQueryExists()) {
+                        searchByName(getSearchQuery())
+                    } else {
+                        satellitesAdapter.updateList(it)
+                    }
+
+                }
+            }
+        }
+    }
+
+
+    private fun gotoSatelliteDetails(id: Int, name: String) {
+        val deepLink = Uri.parse("myApp://satellite_details/$id/$name")
+        if (resources.getBoolean(R.bool.isTablet)) {
+            val navHostFragment = requireActivity()
+                .supportFragmentManager
+                .findFragmentByTag("nav_detail_fragment") as NavHostFragment
+            navHostFragment.navController.navigate(deepLink)
+        } else {
+            findNavController().navigate(deepLink)
+        }
     }
 
     private fun searchByName(query: String) {
@@ -98,27 +118,6 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
 
     private fun getSearchQuery(): String {
         return binding.searchView.query.toString()
-    }
-
-    override fun observers() {
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.satellites.collectLatest {
-
-                    binding.progressBar.show()
-                    delay(400)
-                    binding.progressBar.hide()
-
-                    if (isSearchQueryExists()) {
-                        searchByName(getSearchQuery())
-                    } else {
-                        satellitesAdapter.updateList(it)
-                    }
-                }
-            }
-        }
-
     }
 
 }

@@ -69,7 +69,7 @@ android {
 dependencies {
 
     global {
-        baseAndroidx()
+        BaseAndroidx()
         Coroutines()
         Room()
         Junit()

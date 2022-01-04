@@ -28,7 +28,7 @@ dependencies {
 
     local {
         Coroutines()
-        Junit(enableAndroidTest = false)
+        Junit(isAndroidTestEnabled = false)
     }
 
 }

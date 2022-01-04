@@ -33,8 +33,8 @@ android {
 dependencies {
 
     local {
-        baseAndroidx()
-        Junit(enableAndroidTest = false)
+        BaseAndroidx()
+        Junit(isAndroidTestEnabled = false)
         RecyclerView()
         Espresso()
         Hilt()

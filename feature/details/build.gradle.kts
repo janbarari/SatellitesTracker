@@ -34,9 +34,9 @@ android {
 dependencies {
 
     local {
-        baseAndroidx()
+        BaseAndroidx()
         Coroutines()
-        Junit(enableAndroidTest = false)
+        Junit(isAndroidTestEnabled = false)
         MaterialDesign()
         Core()
         Hilt()
