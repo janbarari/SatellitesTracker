@@ -1,11 +1,13 @@
 # Satellite Tracker: MVVM + Coroutine + Flow = 🦾
 
-Hi there, Satellite app is a sample test project
-in this project I used MVVM + Clean Architecture fully modular based. I Used navigation component for implementing single activity
-and easy to maintain fragments and feature. I used Moshi for parse initial data form assets folder to 
-cache them on database with Room. Also I used Kotlin and Flow to make coroutine able to get the data flow in it's hand. Also I 
-created a custom workaround to manage app and modules dependencies. Created master view design in tablet mode. Satellites Tracker
-is Compatible with Android M and above.
+Hi there
+
+In this project I created a fully modular app with MVVM and Clean Architecture. Used navigation component for implementing single activity
+and decreasing the features dependencies through Deeplink. Used Moshi for parsing the initial data form assets folder to 
+cache them on database with Room. Also with help of Flow I let coroutine get the data flow in hand. Also I 
+created a custom workaround to manage modules dependencies. Created master view design for tablets. 
+
+Satellites Tracker is Compatible with Android M and above.
 
 ![](mobile.gif)
 
