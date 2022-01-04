@@ -4,8 +4,7 @@ import io.github.janbarari.satellitestracker.data.database.entity.SatelliteDetai
 import io.github.janbarari.satellitestracker.domain.core.Mapper
 import javax.inject.Inject
 
-class SatelliteDetailsMapper @Inject constructor() :
-    Mapper<SatelliteDetails, io.github.janbarari.satellitestracker.domain.entity.SatelliteDetails>() {
+class SatelliteDetailsMapper: Mapper<SatelliteDetails, io.github.janbarari.satellitestracker.domain.entity.SatelliteDetails>() {
     override fun map(left: SatelliteDetails): io.github.janbarari.satellitestracker.domain.entity.SatelliteDetails {
         return io.github.janbarari.satellitestracker.domain.entity.SatelliteDetails(
             left.id,

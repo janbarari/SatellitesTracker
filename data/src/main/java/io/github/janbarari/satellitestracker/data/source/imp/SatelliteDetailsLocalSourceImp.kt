@@ -7,7 +7,7 @@ import io.github.janbarari.satellitestracker.data.database.entity.SatelliteDetai
 import io.github.janbarari.satellitestracker.data.source.SatelliteDetailsLocalSource
 import javax.inject.Inject
 
-class SatelliteDetailsLocalSourceImp @Inject constructor(
+class SatelliteDetailsLocalSourceImp(
     private val satelliteDetailsDAO: SatelliteDetailsDao,
     private val assetFileProvider: AssetFileProvider
 ) : SatelliteDetailsLocalSource {

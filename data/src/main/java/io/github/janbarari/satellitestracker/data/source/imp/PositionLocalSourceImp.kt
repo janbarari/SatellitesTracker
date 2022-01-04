@@ -6,7 +6,7 @@ import io.github.janbarari.satellitestracker.data.database.entity.Position
 import io.github.janbarari.satellitestracker.data.source.PositionLocalSource
 import javax.inject.Inject
 
-class PositionLocalSourceImp @Inject constructor(
+class PositionLocalSourceImp(
     private val positionDao: PositionDao,
     private val assetFileProvider: AssetFileProvider
 ) : PositionLocalSource {

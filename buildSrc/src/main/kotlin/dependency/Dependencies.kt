@@ -27,10 +27,6 @@ class Dependencies(
         add("androidx.constraintlayout:constraintlayout:2.1.2")
     }
 
-    fun ViewModel() {
-        add("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
-    }
-
     fun Junit(isAndroidTestEnabled: Boolean = true) {
         test("junit:junit:4.13.2")
         if (isAndroidTestEnabled) {
@@ -52,10 +48,6 @@ class Dependencies(
         add("androidx.appcompat:appcompat:1.4.0")
         add("androidx.activity:activity-ktx:1.4.0")
         add("androidx.fragment:fragment-ktx:1.4.0")
-        add("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-    }
-
-    fun Lifecycle() {
         add("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     }
 

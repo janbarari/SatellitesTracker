@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class SatelliteDetailsRepositoryImp @Inject constructor(
+class SatelliteDetailsRepositoryImp(
     private val source: SatelliteDetailsLocalSource,
     private val satelliteListMapper: SatelliteDetailsMapper
 ) : SatelliteDetailsRepository {

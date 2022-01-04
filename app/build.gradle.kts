@@ -72,9 +72,8 @@ dependencies {
     global {
         BaseAndroidx()
         Hilt()
-    }
-
-    local {
+        Espresso()
+        Junit()
         Feature_List()
         Feature_Details()
     }

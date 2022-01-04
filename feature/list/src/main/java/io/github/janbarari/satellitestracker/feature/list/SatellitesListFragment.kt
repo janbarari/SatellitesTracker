@@ -53,7 +53,6 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
     }
 
     override fun listeners() {
-
         binding.searchView
             .queryTextEvents()
             .debounce(300)
@@ -65,7 +64,7 @@ class SatellitesListFragment : ViewModelFragment<SatellitesListFragmentBinding, 
                 }
                 searchByName(event.query.toString())
             }
-            .launchIn(lifecycleScope)
+            .launchIn(viewLifecycleOwner.lifecycleScope)
 
     }
 

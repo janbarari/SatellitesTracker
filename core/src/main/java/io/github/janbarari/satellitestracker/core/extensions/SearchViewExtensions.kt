@@ -1,3 +1,5 @@
+@file:Suppress("BlockingMethodInNonBlockingContext")
+
 package io.github.janbarari.satellitestracker.core.extensions
 
 import androidx.annotation.CheckResult
@@ -9,6 +11,7 @@ import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.runBlocking
 
 data class SearchViewQueryTextEvent(
     val view: SearchView,
@@ -18,11 +21,12 @@ data class SearchViewQueryTextEvent(
 
 @ExperimentalCoroutinesApi
 @CheckResult
+@Suppress("BlockingMethodInNonBlockingContext")
 fun SearchView.queryTextEvents(): Flow<SearchViewQueryTextEvent> {
     return callbackFlow {
         checkMainThread()
-
         setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
             override fun onQueryTextSubmit(query: String): Boolean {
                 trySendBlocking(
                     SearchViewQueryTextEvent(

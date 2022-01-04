@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class PositionRepositoryImp @Inject constructor(
+class PositionRepositoryImp(
     private val source: PositionLocalSource,
     private val positionMapper: PositionMapper
 ) : PositionRepository {

@@ -19,14 +19,14 @@ abstract class BaseActivity<VB: ViewBinding>(@LayoutRes private val layoutId: In
         onActivityCreate(savedInstanceState, intent)
         binding = getLayoutBinding(LayoutInflater.from(this).inflate(layoutId, null))
         setContentView(binding.root)
-        views()
+        initViews()
         observers()
         listeners()
         onActivityCreated()
     }
 
     open fun onActivityCreate(savedInstanceState: Bundle?, intent: Intent) {}
-    open fun views(){}
+    open fun initViews(){}
     open fun observers(){}
     open fun listeners(){}
     open fun onActivityCreated(){}

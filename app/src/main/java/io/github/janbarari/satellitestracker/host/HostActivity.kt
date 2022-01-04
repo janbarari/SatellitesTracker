@@ -12,5 +12,4 @@ class HostActivity : ViewModelActivity<HostActivityBinding, HostViewModel>(
     HostViewModel::class.java
 ) {
     override fun getLayoutBinding(v: View) = HostActivityBinding.bind(v)
-
 }

@@ -4,14 +4,12 @@ import android.content.Context
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import dagger.hilt.android.qualifiers.ApplicationContext
 import io.github.janbarari.satellitestracker.data.database.entity.Position
 import io.github.janbarari.satellitestracker.data.database.entity.Satellite
 import io.github.janbarari.satellitestracker.data.database.entity.SatelliteDetails
-import javax.inject.Inject
 
-class AssetFileProviderImp @Inject constructor(
-    @ApplicationContext val context: Context,
+class AssetFileProviderImp(
+    private val context: Context,
     private val moshi: Moshi
 ) : AssetFileProvider {
 
